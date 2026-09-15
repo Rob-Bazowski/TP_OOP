@@ -1,15 +1,20 @@
+"""Exercice 4 - Ensembles"""
+
 # Question 1
 
 robots_exploration = {"R2", "R5", "R7"}
 robots_transport = {"R5", "R9", "R7", "R3"}
 
 def robots_double_mission(ensemble1, ensemble2):
+    """Retourne les robots qui participent aux deux missions"""
     return ensemble1 & ensemble2
 
 def robots_toutes_missions(ensemble1, ensemble2):
+    """Retourne les robots participant à des missions"""
     return ensemble1 | ensemble2
 
 def robots_exploration_seulement(ensemble1, ensemble2):
+    """Retourne les robots participant seulement à l'exploration"""
     return ensemble1 - (ensemble1 & ensemble2)
 
 double_mission = robots_double_mission(robots_exploration, robots_transport)
@@ -22,6 +27,7 @@ assert exploration_seule == {"R2"}
 # Question 2
 
 def ajouter_robot_mission(ensemble, robot_a_ajouter):
+    """Ajoute un robot à une mission"""
     nouveau_ensemble = set()
     for robot in ensemble:
         nouveau_ensemble.add(robot)
@@ -29,6 +35,7 @@ def ajouter_robot_mission(ensemble, robot_a_ajouter):
     return nouveau_ensemble
 
 def retirer_robot_mission(ensemble, robot_a_retirer):
+    """Retire un robot d'une mission"""
     nouveau_ensemble = set()
     for robot in ensemble:
         if robot != robot_a_retirer:
