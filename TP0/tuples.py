@@ -20,7 +20,7 @@ assert afficher_releve(releve1) == "Capteur laser_avant : 2.35 m"
 
 def recalibrer(liste_releves, capteur_a_changer, nouvelle_valeur):
     """Change la valeur d'un relevé"""
-    for i,_ in enumerate(releves) :
+    for i,_ in enumerate(liste_releves) :
         capteur, _, unite = liste_releves[i]
         if capteur == capteur_a_changer :
             nouveau_releve = capteur, nouvelle_valeur, unite

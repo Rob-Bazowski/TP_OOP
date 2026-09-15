@@ -21,6 +21,11 @@ class TestJournalDeBord(unittest.TestCase):
         resultat = recalibrer(releves, "telescope", 1000)
         self.assertEqual(resultat, releves)
 
+    def test_recalibrer_IA(self):
+        """Cas limite : la liste de relevés est vide."""
+        resultat = recalibrer([], "laser_avant", 2.40)
+        self.assertEqual(resultat, [])
+
 # Question 2
 
 class TestFlotteRobots(unittest.TestCase):

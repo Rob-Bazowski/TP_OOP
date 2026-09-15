@@ -1,0 +1,21 @@
+Question 2
+Remarques pertinentes : 
+    - for i, _ in enumerate(releves) utilise la variable globale releves au lieu du paramètre liste_releves. La fonction dépend donc d’une donnée extérieure et peut mal fonctionner avec une liste de taille différente.
+    - La fonction modifie directement la liste reçue, puis retourne cette même liste. Il faut donc savoir qu’elle a un effet de bord.
+Pas de remarques hor-sujets / incorrectes
+
+Question 3
+Le test unitaire supplémentaire passe.
+Il couvrait bien un cas que j'avais envisagé (liste vide).
+
+Question 4
+Le README est bien. Il y a tout une partie sur le test des fonctions que je n'aurai pas forcément ajouter moi-même.
+
+Question 5
+Le message commit est aussi précis que ce que j'aurais écris si j'avais à le faire. Cependant, il est en anglais : 
+"Add README and unit tests; fix variable usage in recalibrer function"
+
+Question 6
+L'utilisation de l'agent IA pour la rédaction de tests unitaires de fonction. 
+Cela permet de tester des cas limites auxquels on aurait pas forcément penser.
+En cas d'erreur de l'IA, cela n'a aucun effet sur le code puisque c'est un test que l'on peut simplement ignorer.
