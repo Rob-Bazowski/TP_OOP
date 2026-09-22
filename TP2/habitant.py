@@ -1,5 +1,6 @@
 """Exercice 3 - De la fonction à la classe Habitant / Exercice 4 - Encapsulation 
-/ Exercice 6 - Surcharge du constructeur / Exercice 7 - Héritage : Adulte et Enfant"""
+/ Exercice 6 - Surcharge du constructeur / Exercice 7 - Héritage : Adulte et Enfant
+/ Exercice 8 - Polymorphisme"""
 
 from multipledispatch import dispatch
 from abc import ABC, abstractmethod
@@ -61,6 +62,9 @@ class Habitant (ABC):
     def calcul_annee_avant_retraite(self):
         pass
 
+    def __str__(self):
+        return f"{self.__nom}, {self.__age}, habite a {self.__adresse} possède {self.__animaux}"
+
 class Adulte(Habitant):
     """Classe habitant adulte"""
 
@@ -71,6 +75,7 @@ class Adulte(Habitant):
             raise ValueError("Un adulte ne peut pas avoir moins de 18 ans.")
 
     def calcul_annee_avant_retraite(self):
+        """Calcule le nombre d'année avant la retraite si l'habitant n'est pas déjà à la retraite"""
         if self.age >= 62:
             return "Déjà à la retraite"
         else:
@@ -86,6 +91,7 @@ class Enfant(Habitant):
             raise ValueError("Un enfant ne peut pas avoir plus de 18 ans.")
 
     def calcul_annee_avant_retraite(self):
+        """Ne calcule pas le nombre d'année avant la retraite"""
         return "Un enfant ne peut pas calculer sa retraite"
 
 @dispatch(Habitant, str)
@@ -112,3 +118,5 @@ try:
     assert False, "une ValueError aurait du etre levee"
 except ValueError:
     pass
+
+print(adulte)
