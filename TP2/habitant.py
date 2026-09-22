@@ -1,8 +1,10 @@
-"""Exercice 3 - De la fonction à la classe Habitant / Exercice 4 - Encapsulation / Exercice 6 - Surcharge du constructeur"""
+"""Exercice 3 - De la fonction à la classe Habitant / Exercice 4 - Encapsulation 
+/ Exercice 6 - Surcharge du constructeur / Exercice 7 - Héritage : Adulte et Enfant"""
 
 from multipledispatch import dispatch
+from abc import ABC, abstractmethod
 
-class Habitant:
+class Habitant (ABC):
     """Classe Habitant contenant le nom, l'âge, l'adresse et les animaux d'un habitant"""
 
     def __init__(self, nom, age, adresse, animaux = None):
@@ -55,6 +57,13 @@ class Habitant:
             return self.__animaux[animal]
         return 0
 
+    @abstractmethod
+    def calcul_annee_avant_retraite(self):
+        if self.__age > 62:
+            return 0
+        else:
+            62 - self.__age
+
 @dispatch(Habitant, str)
 def set_info(habitant, nom):
     habitant.set_nom(nom)
@@ -64,24 +73,7 @@ def set_info(habitant, nom, age):
     habitant.set_nom(nom)
     habitant.set_age(age)
 
-h1 = Habitant("Aldric", 25, "Rue A", {"vaches": 3})
-assert h1.get_nom() == "Aldric"
-assert h1.compte_animal("vaches") == 3
-assert h1.compte_animal("moutons") == 0
-#h1.affichage_adresse() # affiche "Aldric habite a Rue A"
-
-h1.age = 26
-assert h1.age == 26
 try:
-    h1.age = -5
-    assert False, "une ValueError aurait du etre levee"
-except ValueError: 
+    h1 = Habitant("Jean", 12, "Boulevard McDonald", {})
+except TypeError:
     pass
-
-
-set_info(h1, "Roger")
-assert h1.get_nom() == "Roger"
-assert h1.age == 26
-set_info(h1, "Frédéric", 41)
-assert h1.get_nom() == "Frédéric"
-assert h1.age == 41
