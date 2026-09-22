@@ -59,10 +59,34 @@ class Habitant (ABC):
 
     @abstractmethod
     def calcul_annee_avant_retraite(self):
-        if self.__age > 62:
-            return 0
+        pass
+
+class Adulte(Habitant):
+    """Classe habitant adulte"""
+
+    def __init__(self, nom, age, adresse, animaux = None):
+        if age >= 18:
+            super().__init__(nom, age, adresse, animaux)
         else:
-            62 - self.__age
+            raise ValueError("Un adulte ne peut pas avoir moins de 18 ans.")
+
+    def calcul_annee_avant_retraite(self):
+        if self.age >= 62:
+            return "Déjà à la retraite"
+        else:
+            return 62 - self.age
+
+class Enfant(Habitant):
+    """Classe habitant enfant"""
+
+    def __init__(self, nom, age, adresse, animaux = None):
+        if age < 18:
+            super().__init__(nom, age, adresse, animaux)
+        else:
+            raise ValueError("Un enfant ne peut pas avoir plus de 18 ans.")
+
+    def calcul_annee_avant_retraite(self):
+        return "Un enfant ne peut pas calculer sa retraite"
 
 @dispatch(Habitant, str)
 def set_info(habitant, nom):
@@ -76,4 +100,15 @@ def set_info(habitant, nom, age):
 try:
     h1 = Habitant("Jean", 12, "Boulevard McDonald", {})
 except TypeError:
+    pass
+
+adulte = Adulte("Marie", 35, "Rue A")
+enfant = Enfant("Lucas", 12, "Rue B")
+assert isinstance(adulte, Habitant)
+assert adulte.calcul_annee_avant_retraite() == 27
+assert "enfant" in enfant.calcul_annee_avant_retraite()
+try:
+    Enfant("Oups", 25, "Rue C")
+    assert False, "une ValueError aurait du etre levee"
+except ValueError:
     pass
