@@ -12,6 +12,16 @@ class Habitant:
         else:
             self.__animaux = {}
 
+    @property
+    def age(self):
+        return self.__age 
+
+    @age.setter
+    def age(self, age):
+        if age < 0 or 130 < age:
+            raise ValueError("L'âge doit être compris entre 0 et 130")
+        self.__age = age
+
     def get_nom(self):
         return self.__nom
 
@@ -20,9 +30,9 @@ class Habitant:
 
     def get_adresse(self):
         return self.__adresse
-    
-    def get_animaux(self):
-        return self.__animaux
+
+    def set_nom(self, nom):
+        self.__nom == nom
 
     def set_age(self, age):
         self.__age = age
@@ -48,3 +58,11 @@ assert h1.get_nom() == "Aldric"
 assert h1.compte_animal("vaches") == 3
 assert h1.compte_animal("moutons") == 0
 h1.affichage_adresse() # affiche "Aldric habite a Rue A"
+
+h1.age = 26
+assert h1.age == 26
+try:
+    h1.age = -5
+    assert False, "une ValueError aurait du etre levee"
+except ValueError: 
+    pass
