@@ -2,7 +2,7 @@
 
 # Question 1
 
-from habitant import Habitant
+from habitant import Adulte, Enfant
 
 class Village:
     """Classe Village contenant le nom du village et la liste de ses habitants"""
@@ -18,7 +18,11 @@ class Village:
 
     def ajouter_habitant_composition(self, nom, age, adresse, animaux = None):
         """Ajout d'un habitant au village"""
-        self.habitants.append(Habitant(nom, age, adresse, animaux))
+        if age < 18:
+            self.habitants.append(Enfant(nom, age, adresse, animaux))
+        else:
+            self.habitants.append(Adulte(nom, age, adresse, animaux))
+
 
     def ajouter_habitant_agregation(self, habitant):
         """Ajout d'un habitant au village"""
@@ -35,7 +39,7 @@ class Village:
 
 pytown = Village("PyTown")
 pytown.ajouter_habitant_composition("Aldric", 25, "Rue A", {"vaches": 3})
-elise = Habitant("Elise", 28, "Rue B", {"poules": 10})
+elise = Adulte("Elise", 28, "Rue B", {"poules": 10})
 pytown.ajouter_habitant_agregation(elise)
 autre_village = Village("VillageVoisin")
 autre_village.ajouter_habitant_agregation(elise) # meme habitant dans 2 villages

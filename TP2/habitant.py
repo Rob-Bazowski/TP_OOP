@@ -36,6 +36,9 @@ class Habitant (ABC):
     def get_adresse(self):
         return self.__adresse
 
+    def get_animaux(self):
+        return self.__animaux
+
     def set_nom(self, nom):
         self.__nom = nom
 
