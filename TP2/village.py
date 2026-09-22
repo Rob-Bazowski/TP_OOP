@@ -1,5 +1,7 @@
 """Exercice 5 - Compositio et agrégation : la classe Village"""
 
+# Question 1
+
 from habitant import Habitant
 
 class Village:
@@ -11,6 +13,8 @@ class Village:
 
     def get_habitants(self):
         return self.habitants
+
+# Question 2
 
     def ajouter_habitant_composition(self, nom, age, adresse, animaux = None):
         """Ajout d'un habitant au village"""
@@ -38,3 +42,7 @@ autre_village.ajouter_habitant_agregation(elise) # meme habitant dans 2 villages
 assert len(pytown.get_habitants()) == 2
 assert elise in autre_village.get_habitants()
 pytown.afficher_habitants()
+
+# Question 3
+# Dans ajouter_habitant_composition, on crée un nouvel objet habitant dans la méthode -> Compostion
+# Dans ajouter_habitant_agregation, on ajoute un objet habitant déjà existant dans la méthode -> Agrégation
