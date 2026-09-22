@@ -45,7 +45,7 @@ class Habitant:
 
     def affichage_adresse(self):
         """Affiche l'adresse d'un habitant"""
-        print(f"{self.__nom} habite a Rue {self.__adresse}")
+        print(f"{self.__nom} habite a {self.__adresse}")
 
     def compte_animal(self, animal):
         """Compte le nombre le compte d'un certain animal qu'a un habitant"""
@@ -57,7 +57,7 @@ h1 = Habitant("Aldric", 25, "Rue A", {"vaches": 3})
 assert h1.get_nom() == "Aldric"
 assert h1.compte_animal("vaches") == 3
 assert h1.compte_animal("moutons") == 0
-h1.affichage_adresse() # affiche "Aldric habite a Rue A"
+#h1.affichage_adresse() # affiche "Aldric habite a Rue A"
 
 h1.age = 26
 assert h1.age == 26
