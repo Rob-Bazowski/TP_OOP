@@ -104,7 +104,7 @@ def set_info(habitant, nom, age):
     habitant.set_age(age)
 
 def affichage(h: Habitant):
-    print(h)
+    return str(h)
 
 try:
     h1 = Habitant("Jean", 12, "Boulevard McDonald", {})
@@ -125,5 +125,9 @@ except ValueError:
 print("Fonction print :")
 print(adulte)
 print("Fonction affichage :")
-affichage(adulte)
-affichage(enfant)
+print(affichage(adulte))
+print(affichage(enfant))
+
+# Exercice 8 | Question 3
+# Rendre la méthode abstraite oblige chaque classe dérivée (Adulte et Enfant) à fournir sa propre implémentation, 
+# ce qui garantit que le polymorphisme fonctionne correctement et évite qu’un objet puisse utiliser une méthode non définie.
