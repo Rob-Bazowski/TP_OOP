@@ -103,6 +103,9 @@ def set_info(habitant, nom, age):
     habitant.set_nom(nom)
     habitant.set_age(age)
 
+def affichage(h: Habitant):
+    print(h)
+
 try:
     h1 = Habitant("Jean", 12, "Boulevard McDonald", {})
 except TypeError:
@@ -119,4 +122,8 @@ try:
 except ValueError:
     pass
 
+print("Fonction print :")
 print(adulte)
+print("Fonction affichage :")
+affichage(adulte)
+affichage(enfant)
