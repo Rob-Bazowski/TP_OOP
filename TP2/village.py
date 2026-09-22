@@ -12,6 +12,7 @@ class Village:
         self.habitants = []
 
     def get_habitants(self):
+        """Renvoie la liste des habitants du village"""
         return self.habitants
 
 # Question 2
@@ -29,6 +30,7 @@ class Village:
         self.habitants.append(habitant)
 
     def afficher_habitants(self):
+        """Affiche la liste des habitants du village"""
         texte = "["
         for i,habitant in enumerate(self.habitants):
             if i != len(self.habitants)-1:
@@ -49,4 +51,5 @@ pytown.afficher_habitants()
 
 # Question 3
 # Dans ajouter_habitant_composition, on crée un nouvel objet habitant dans la méthode -> Compostion
-# Dans ajouter_habitant_agregation, on ajoute un objet habitant déjà existant dans la méthode -> Agrégation
+# Dans ajouter_habitant_agregation,
+# on ajoute un objet habitant déjà existant dans la méthode -> Agrégation
