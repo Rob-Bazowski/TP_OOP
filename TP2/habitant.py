@@ -1,4 +1,6 @@
-"""Exercice 3 - De la fonction à la classe Habitant / Exercice 4 - Encapsulation"""
+"""Exercice 3 - De la fonction à la classe Habitant / Exercice 4 - Encapsulation / Exercice 6 - Surcharge du constructeur"""
+
+from multipledispatch import dispatch
 
 class Habitant:
     """Classe Habitant contenant le nom, l'âge, l'adresse et les animaux d'un habitant"""
@@ -32,7 +34,7 @@ class Habitant:
         return self.__adresse
 
     def set_nom(self, nom):
-        self.__nom == nom
+        self.__nom = nom
 
     def set_age(self, age):
         self.__age = age
@@ -53,6 +55,15 @@ class Habitant:
             return self.__animaux[animal]
         return 0
 
+@dispatch(Habitant, str)
+def set_info(habitant, nom):
+    habitant.set_nom(nom)
+
+@dispatch(Habitant, str, int)
+def set_info(habitant, nom, age):
+    habitant.set_nom(nom)
+    habitant.set_age(age)
+
 h1 = Habitant("Aldric", 25, "Rue A", {"vaches": 3})
 assert h1.get_nom() == "Aldric"
 assert h1.compte_animal("vaches") == 3
@@ -66,3 +77,11 @@ try:
     assert False, "une ValueError aurait du etre levee"
 except ValueError: 
     pass
+
+
+set_info(h1, "Roger")
+assert h1.get_nom() == "Roger"
+assert h1.age == 26
+set_info(h1, "Frédéric", 41)
+assert h1.get_nom() == "Frédéric"
+assert h1.age == 41
